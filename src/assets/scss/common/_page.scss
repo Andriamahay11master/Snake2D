@@ -1,82 +1,8 @@
 .page{
-    padding-top: 106px;
-    .newsletter{
-      margin: auto;
-      margin-bottom: -109px;
-      position: relative;
-      z-index: 2;
-      @include max(1200px){
-        margin-bottom: -50px;
-      }
-      @include max(600px){
-        margin-bottom: -30px;
-      }
-    }
-    .footerPage{
-      position: relative;
-      z-index: 1;
-    }
-
-    .section{
-        padding: 50px 0;
-        @include max(1440px){
-          padding: 25px 0;
-        }
-        .section-wrapper{
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          column-gap: 100px;
-          @include max(1200px){
-            column-gap: 50px;
-          }
-          @include max(992px){
-            grid-template-columns: 100%;
-            row-gap: 50px;
-          }
-        }
-        &.popular-destination{
-          p{
-            margin-bottom: 0;
-          }
-        }
-        &.trip{
-          .section-wrapper{
-            grid-template-columns: 20% calc(80% - 100px);
-            @include max(992px){
-              grid-template-columns: 100%;
-            }
-          }
-          .blocTitle{
-            margin-bottom: 50px;
-          }
-          .btn{
-            position: relative;
-            z-index: 2;
-            &::before, &::after{
-              content: '';
-              width: 43px;
-              height: 43px;
-              position: absolute;
-              transition: all 0.3s ease;
-              z-index: -1;
-            }
-            &:before{
-              top: -14px;
-              left: -14px;
-              background: $black;
-            }
-            &::after{
-              background: $grey;
-              bottom: -16px;
-              right: -16px;
-            }
-          }
-        }
-    }
-
     .gameContainer {
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
     }
   }

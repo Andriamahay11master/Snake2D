@@ -4,9 +4,10 @@
 
 
 .game{
+    position: relative;
     .score {
-        color: #fff;
         font-size: 20px;
+        text-align: left;
         margin-bottom: 10px;
     }
 
@@ -15,23 +16,27 @@
         padding: 10px;
         font-size: 16px;
         cursor: pointer;
+        position: absolute;
+        right: -30%;
     }
 
     canvas {
-        border: 1px solid #fff;
+        border: 1px solid $color-grayscale;
     }
 
     .gameOver {
-        color: red;
+        color: $color-error;
         font-size: 24px;
         margin-top: 10px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        p{
+            margin-bottom: 10px;
+        }
     }
 
     .restartButton {
-        margin-top: 10px;
         padding: 10px;
         font-size: 16px;
         cursor: pointer;

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-
+import './game.scss';
 const scale = 20;
 const rows = 400 / scale; // Assumes canvas height is 400
 const columns = 400 / scale; // Assumes canvas width is 400
@@ -113,26 +113,26 @@ const Game = () => {
     if (!ctx) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = '#FFF';
+    ctx.fillStyle = '#0B63E5';
     snake.forEach((segment) => {
         ctx.fillRect(segment.x, segment.y, scale, scale);
     });
 
-    ctx.fillStyle = '#4cafab';
+    ctx.fillStyle = '#0F9918';
     ctx.fillRect(fruit.x, fruit.y, scale, scale);
 };
 
   return (
     <div className='game'>
-      <div id="score">Score: {score}</div>
-      <button id="pauseButton" onClick={handlePause}>
+      <div className="score">Score: {score}</div>
+      <button className="btn btn-primary pauseButton" onClick={handlePause}>
         {isPaused ? 'Resume' : 'Pause'}
       </button>
-      <canvas id="gameCanvas" ref={canvasRef} width="400" height="400" />
+      <canvas className="gameCanvas" ref={canvasRef} width="400" height="400" />
       {isGameOver && (
-        <div id="gameOver">
+        <div className="gameOver">
           <p>Game Over</p>
-          <button id="restartButton" onClick={handleRestart}>Play Again</button>
+          <button className="btn btn-gray restartButton" onClick={handleRestart}>Play Again</button>
         </div>
       )}
     </div>
