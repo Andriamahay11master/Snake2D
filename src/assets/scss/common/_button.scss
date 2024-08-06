@@ -1,0 +1,335 @@
+
+.btn {
+  padding: 20px;
+  font-family: $rubik;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  line-height: 1;
+  @include max(1440px) {
+    font-size: 15px;
+  }
+  @include max(992px){
+    padding: 20px;
+  }
+  &:active, &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &.btn-burger{
+    padding: 0;
+  }
+  &.btn-icon{
+    display: inline-flex;
+    align-items: center;
+    i {
+      display: inline-block;
+      margin-left: 10px;
+      transition: all 0.4s ease-in-out;
+    }
+    &:hover{
+      i{
+        margin-left: 15px;
+      }
+    }
+  }
+  &.disabled{
+    pointer-events: none;
+  }
+  &.btn-link {
+    padding: 0;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &.btn-loading{
+    pointer-events: none;
+    position: relative;
+    padding-left: 50px;
+    &:before{
+      content: "\e97a";
+      font-family: 'icomoon';
+      font-size: 18px;
+      margin-right: 10px;
+      animation: spin 1s linear infinite;
+       display: inline-block;
+       position: absolute;
+       top: 18px;
+       left: 25px;
+    }
+  }
+  &.btn-primary,&.btn-info {
+    border: 1px solid $color-primary;
+    background: $color-primary;
+    color: $white;
+    &:hover {
+      background-color: darken($color-primary, 10%);
+      border-color: darken($color-primary, 10%);
+    }
+    &.disabled{
+      background-color: lighten($color-primary, 40%);
+      border-color: lighten($color-primary, 40%);
+    }  
+    &.btn-darken{
+      background-color: darken($color-primary, 20%);
+      &:hover {
+        background-color: lighten($color-primary, 10%);
+        border-color: lighten($color-primary, 10%);
+      }
+    }
+  }
+  &.btn-outline-primary {
+    border: 1px solid $color-primary;
+    background: $white;
+    color: $color-primary;
+    &:hover {
+      background-color: $color-primary;
+      color: $white;
+    }
+    &.disabled{
+      background-color: lighten($color-primary, 50%);
+      border-color: lighten($color-primary, 50%);
+    }  
+    &.btn-darken{
+      background-color: rgba($color-primary, 0.2);
+      &:hover {
+        background-color: darken($color-primary, 10%);
+        border-color: darken($color-primary, 10%);
+      }
+    }
+  }
+  &.btn-gray {
+    border: 1px solid rgba($color-grayscale, 0.5);
+    background: rgba($color-grayscale, 0.5);
+    color: #000;
+    &:hover {
+      background-color: darken($color-grayscale, 10%);
+      border-color: darken($color-grayscale, 10%);
+    }
+    &.disabled{
+      background-color: lighten($color-grayscale, 10%);
+      border-color: lighten($color-grayscale, 10%);
+    }  
+    &.btn-darken{
+      background-color: darken($color-grayscale, 20%);
+      &:hover {
+        background-color: lighten($color-grayscale, 10%);
+        border-color: lighten($color-grayscale, 10%);
+      }
+    }
+  }
+  &.btn-outline-gray{
+    border: 1px solid $color-grayscale;
+    background: $white;
+    color: $color-grayscale;
+    &.disabled{
+      background-color: lighten($color-grayscale, 30%);
+      border-color: lighten($color-grayscale, 30%);
+    }  
+    &.btn-darken{
+      background-color: rgba($color-grayscale, 0.2);
+      &:hover {
+        background-color: darken($color-grayscale, 10%);
+        border-color: darken($color-grayscale, 10%);
+        color: #FFF;
+      }
+    }
+  }
+  &.btn-secondary {
+    border: 1px solid $color-secondary;
+    background: $color-secondary;
+    color: $white;
+    &:hover {
+      background-color: darken($color-secondary, 10%);
+      border-color: darken($color-secondary, 10%);
+    }
+    &.disabled{
+      background-color: lighten($color-secondary, 10%);
+      border-color: lighten($color-secondary, 10%);
+    }  
+    &.btn-darken{
+      background-color: darken($color-secondary, 20%);
+      &:hover {
+        background-color: lighten($color-secondary, 10%);
+        border-color: lighten($color-secondary, 10%);
+      }
+    }
+  }
+  &.btn-outline-secondary{
+    border: 1px solid $color-secondary;
+    background: $white;
+    color: $color-secondary;
+    &.disabled{
+      background-color: lighten($color-secondary, 30%);
+      border-color: lighten($color-secondary, 30%);
+    }  
+    &.btn-darken{
+      background-color: rgba($color-secondary, 0.2);
+      &:hover {
+        background-color: darken($color-secondary, 10%);
+        border-color: darken($color-secondary, 10%);
+        color: #FFF;
+      }
+    }
+  }
+  &.btn-sucess {
+    border: 1px solid $color-sucess;
+    background: $color-sucess;
+    color: $white;
+    &:hover {
+      background-color: darken($color-sucess, 10%);
+      border-color: darken($color-sucess, 10%);
+    }
+    &.disabled{
+      background-color: lighten($color-sucess, 10%);
+      border-color: lighten($color-sucess, 10%);
+    }  
+    &.btn-darken{
+      background-color: darken($color-sucess, 20%);
+      &:hover {
+        background-color: lighten($color-sucess, 10%);
+        border-color: lighten($color-sucess, 10%);
+      }
+    }
+  }
+  &.btn-outline-sucess{
+    border: 1px solid $color-sucess;
+    background: $white;
+    color: $color-sucess;
+    &.disabled{
+      background-color: lighten($color-sucess, 30%);
+      border-color: lighten($color-sucess, 30%);
+    }  
+    &.btn-darken{
+      background-color: rgba($color-sucess, 0.2);
+      &:hover {
+        background-color: darken($color-sucess, 10%);
+        border-color: darken($color-sucess, 10%);
+        color: #FFF;
+      }
+    }
+  }
+  &.btn-warning {
+    border: 1px solid $color-warning;
+    background: $color-warning;
+    color: $white;
+    &:hover {
+      background-color: darken($color-warning, 10%);
+      border-color: darken($color-warning, 10%);
+    }
+    &.disabled{
+      background-color: lighten($color-warning, 10%);
+      border-color: lighten($color-warning, 10%);
+    }  
+    &.btn-darken{
+      background-color: darken($color-warning, 20%);
+      &:hover {
+        background-color: lighten($color-warning, 10%);
+        border-color: lighten($color-warning, 10%);
+      }
+    }
+  }
+  &.btn-outline-warning{
+    border: 1px solid $color-warning;
+    background: $white;
+    color: $color-warning;
+    &.disabled{
+      background-color: lighten($color-warning, 30%);
+      border-color: lighten($color-warning, 30%);
+    }  
+    &.btn-darken{
+      background-color: rgba($color-warning, 0.2);
+      &:hover {
+        background-color: darken($color-warning, 10%);
+        border-color: darken($color-warning, 10%);
+        color: #FFF;
+      }
+    }
+  }
+  &.btn-error {
+    border: 1px solid $color-error;
+    background: $color-error;
+    color: $white;
+    &:hover {
+      background-color: darken($color-error, 10%);
+      border-color: darken($color-error, 10%);
+    }
+    &.disabled{
+      background-color: lighten($color-error, 10%);
+      border-color: lighten($color-error, 10%);
+    }  
+    &.btn-darken{
+      background-color: darken($color-error, 20%);
+      &:hover {
+        background-color: lighten($color-error, 10%);
+        border-color: lighten($color-error, 10%);
+      }
+    }
+  }
+  &.btn-outline-error{
+    border: 1px solid $color-error;
+    background: $white;
+    color: $color-error;
+    &.disabled{
+      background-color: lighten($color-error, 30%);
+      border-color: lighten($color-error, 30%);
+    }  
+    &.btn-darken{
+      background-color: rgba($color-error, 0.2);
+      &:hover {
+        background-color: darken($color-error, 10%);
+        border-color: darken($color-error, 10%);
+        color: #FFF;
+      }
+    }
+  }
+  &.btn-arrow{
+    color: $color-primary;
+    padding: 0;
+    i{
+      transition: all 0.4s ease;
+      margin-left: 15px;
+    }
+    &:hover{
+      i{
+        margin-left: 25px;
+      }
+    }
+  }
+  &.btn-top{
+    padding: 20px;
+    color: $white;
+    background: $color-primary;
+    border-radius: 7px;
+    @include max(768px){
+      padding: 15px;
+    }
+    i{
+      display: inline-block;
+      transform: rotate(180deg);
+    }
+    &:hover{
+      background-color: darken($color-primary, 10%);
+      border-color: darken($color-primary, 10%);
+    }
+  }
+  &.btn-close{
+    padding: 0;
+    display: flex;
+    align-items: center;
+    background: transparent; 
+    i{
+      color: darken($color-grayscale, 80%);
+      font-size: 20px;
+    }
+    &:hover{
+      i{
+        color: #FFF;
+      }
+    }
+  }
+}

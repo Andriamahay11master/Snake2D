@@ -1,0 +1,60 @@
+.carousel-list-full{
+    padding-top: 100px;
+    position: relative;
+    overflow: unset!important;
+    &.carousel-trip{
+        padding-top: 0;
+    }
+    &.carousel-offer{
+        // display: block;
+        // @include max(992px){
+        //     display: flex;
+        // }
+    }
+    @include max(1440px){
+        overflow: hidden!important;
+    }
+    li{
+        border-radius: 26px;
+        overflow: hidden;
+        &:not(:last-child){
+            margin-right: 32px;
+            @include max(768px){
+                margin-right: 0;
+            }
+        }
+    }
+    .react-multiple-carousel__arrow{
+        width: 66px;
+        height: 66px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $white;
+        background: $color-primary;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        @include max(1440px){
+            width: 56px;
+            height: 56px;
+        }
+        @include max(768px){
+            top: 20px;
+        }
+        &:disabled{
+            background: $black;
+        }
+        &.react-multiple-carousel__arrow--left{
+            left: initial;   
+            right: 106px;
+            @include max(1440px){
+                right: 76px;
+            }
+        }   
+        &.react-multiple-carousel__arrow--right{
+            right: 0;
+        }
+    }
+}
