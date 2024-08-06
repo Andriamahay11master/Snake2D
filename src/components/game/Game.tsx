@@ -1,6 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Snake from './Snake';
-import Fruit from './Fruit';
+import { useState, useEffect, useRef } from 'react';
 
 const scale = 20;
 const rows = 400 / scale; // Assumes canvas height is 400
@@ -8,7 +6,7 @@ const columns = 400 / scale; // Assumes canvas width is 400
 
 const Game = () => {
   const [snake, setSnake] = useState([{ x: 0, y: 0 }]);
-  const [fruit, setFruit] = useState({ x: 0, y: 0 });
+  const [fruit, setFruit] = useState(pickLocation());
   const [direction, setDirection] = useState({ x: scale, y: 0 });
   const [score, setScore] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -16,7 +14,6 @@ const Game = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    setFruit(pickLocation());
     document.addEventListener('keydown', handleKeyDown);
 
     const interval = setInterval(() => {
@@ -31,12 +28,16 @@ const Game = () => {
     };
   }, [isPaused, isGameOver, direction, snake]);
 
-  const pickLocation = () => {
+  useEffect(() => {
+    draw();
+  }, [snake, fruit]);
+
+  function pickLocation(){
     return {
       x: Math.floor(Math.random() * rows) * scale,
       y: Math.floor(Math.random() * columns) * scale,
     };
-  };
+  }
 
   const handleKeyDown = (e: KeyboardEvent) => {
     switch (e.key) {
@@ -105,22 +106,36 @@ const Game = () => {
     setFruit(pickLocation());
   };
 
+  const draw = () => {
+    const canvas = canvasRef.current as HTMLCanvasElement | null;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#FFF';
+    snake.forEach((segment) => {
+        ctx.fillRect(segment.x, segment.y, scale, scale);
+    });
+
+    ctx.fillStyle = '#4cafab';
+    ctx.fillRect(fruit.x, fruit.y, scale, scale);
+};
+
   return (
-    <>
-      <div className="score">Score: {score}</div>
-      <button className="pauseButton" onClick={handlePause}>
+    <div className='game'>
+      <div id="score">Score: {score}</div>
+      <button id="pauseButton" onClick={handlePause}>
         {isPaused ? 'Resume' : 'Pause'}
       </button>
-      <canvas className="gameCanvas" ref={canvasRef} width="400" height="400" />
+      <canvas id="gameCanvas" ref={canvasRef} width="400" height="400" />
       {isGameOver && (
-        <div className="gameOver">
+        <div id="gameOver">
           <p>Game Over</p>
-          <button className="restartButton" onClick={handleRestart}>Play Again</button>
+          <button id="restartButton" onClick={handleRestart}>Play Again</button>
         </div>
       )}
-      <Snake snake={snake} scale={scale} />
-      <Fruit fruit={fruit} scale={scale} />
-    </>
+    </div>
   );
 };
 
