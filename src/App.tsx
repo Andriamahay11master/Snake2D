@@ -4,9 +4,12 @@ import Snake from './components/snake/Snake'
 function App() {
 
   return (
-    <div id="gameContainer">
+    <div className="page">
+      <div className="gameContainer">
         <Snake/>
+      </div>
     </div>
+    
   )
 }
 

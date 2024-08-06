@@ -6,7 +6,11 @@ body {
   font-family: $rubik;
   font-size: 16px;
   line-height: 1.45;
-
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
   @include max(1280px) {
     font-size: 15px;
   }
