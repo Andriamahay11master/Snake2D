@@ -1,12 +1,12 @@
 import './App.scss'
 import './assets/scss/main.scss'
-import Snake from './components/snake/Snake'
+import Game from './components/game/Game'
 function App() {
 
   return (
     <div className="page">
       <div className="gameContainer">
-        <Snake/>
+        <Game/>
       </div>
     </div>
     
