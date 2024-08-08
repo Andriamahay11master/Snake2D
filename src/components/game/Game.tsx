@@ -21,7 +21,7 @@ const Game = () => {
       if (!isPaused && !isGameOver) {
         update();
       }
-    }, 250);
+    }, 200);
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
