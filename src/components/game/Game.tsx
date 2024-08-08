@@ -12,14 +12,9 @@ const Game = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const canvasRef = useRef(null);
-  const touchStartRef = useRef({ x: 0, y: 0 });
-  const touchEndRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
-    document.addEventListener('touchstart', handleTouchStart);
-    document.addEventListener('touchmove', handleTouchMove);
-    document.addEventListener('touchend', handleTouchEnd);
 
     const interval = setInterval(() => {
       if (!isPaused && !isGameOver) {
@@ -29,9 +24,6 @@ const Game = () => {
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
-      document.removeEventListener('touchstart', handleTouchStart);
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleTouchEnd);
       clearInterval(interval);
     };
   }, [isPaused, isGameOver, direction, snake]);
@@ -66,34 +58,22 @@ const Game = () => {
     }
   };
 
-  const handleTouchStart = (e: TouchEvent) => {
-    const touch = e.touches[0];
-    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
-  };
-
-  const handleTouchMove = (e: TouchEvent) => {
-    const touch = e.touches[0];
-    touchEndRef.current = { x: touch.clientX, y: touch.clientY };
-  };
-
-  const handleTouchEnd = () => {
-    const deltaX = touchEndRef.current.x - touchStartRef.current.x;
-    const deltaY = touchEndRef.current.y - touchStartRef.current.y;
-    const absDeltaX = Math.abs(deltaX);
-    const absDeltaY = Math.abs(deltaY);
-
-    if (absDeltaX > absDeltaY) {
-      if (deltaX > 0 && direction.x === 0) {
-        setDirection({ x: scale, y: 0 }); // Swipe right
-      } else if (deltaX < 0 && direction.x === 0) {
-        setDirection({ x: -scale, y: 0 }); // Swipe left
-      }
-    } else {
-      if (deltaY > 0 && direction.y === 0) {
-        setDirection({ x: 0, y: scale }); // Swipe down
-      } else if (deltaY < 0 && direction.y === 0) {
-        setDirection({ x: 0, y: -scale }); // Swipe up
-      }
+  const handleDirectionChange = (newDirection: string) => {
+    switch (newDirection) {
+      case 'Up':
+        if (direction.y === 0) setDirection({ x: 0, y: -scale });
+        break;
+      case 'Down':
+        if (direction.y === 0) setDirection({ x: 0, y: scale });
+        break;
+      case 'Left':
+        if (direction.x === 0) setDirection({ x: -scale, y: 0 });
+        break;
+      case 'Right':
+        if (direction.x === 0) setDirection({ x: scale, y: 0 });
+        break;
+      default:
+        break;
     }
   };
 
@@ -174,6 +154,16 @@ const Game = () => {
           <button className="btn btn-gray restartButton" onClick={handleRestart}>Play Again</button>
         </div>
       )}
+      <div className='controls'>
+        <div className="control-top">
+          <button className="btn btn-gray" onClick={() => handleDirectionChange('Up')}><i className='icon-long-arrow up'></i></button>
+        </div>
+        <div className="control-bottom">
+          <button className="btn btn-gray" onClick={() => handleDirectionChange('Left')}><i className='icon-long-arrow left'></i></button>
+          <button className="btn btn-gray" onClick={() => handleDirectionChange('Down')}><i className='icon-long-arrow down'></i></button>
+          <button className="btn btn-gray" onClick={() => handleDirectionChange('Right')}><i className='icon-long-arrow right'></i></button>
+        </div>
+      </div>
     </div>
   );
 };
