@@ -26,9 +26,13 @@
   &.btn-icon{
     display: inline-flex;
     align-items: center;
+    flex-direction: column;
+    background: transparent;
+    color: #FFF;
     i {
+      font-size: 20px;
       display: inline-block;
-      margin-left: 10px;
+      margin-bottom: 10px;
       transition: all 0.4s ease-in-out;
     }
     &:hover{

@@ -1,3 +1,4 @@
+import './over.scss'
 interface OverProps {
     scale: number;
     statut: boolean;
@@ -24,11 +25,13 @@ export default function Over({scale, statut,
 
     return (
         <div className={statut ? "over-content show" : "over-content"}>
-            <div className="over-top">
-                <p>Game Over</p>
-            </div>
-            <div className="over-bottom">
-                <button className="btn btn-icon" onClick={handleRestart}><i className="icon icon-retry"></i><span>Tap to retry</span></button>
+            <div className="over-body">
+                <div className="over-top">
+                    <p>Game Over</p>
+                </div>
+                <div className="over-bottom">
+                    <button className="btn btn-icon" onClick={handleRestart}><i className="icon icon-retry"></i><span>Tap to retry</span></button>
+                </div>
             </div>
         </div>
     )

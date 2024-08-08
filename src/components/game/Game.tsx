@@ -140,9 +140,7 @@ const Game = () => {
         {isPaused ? 'Resume' : 'Pause'}
       </button>
       <canvas className="gameCanvas" ref={canvasRef} width="400" height="400" />
-      {isGameOver && (
-        <Over scale={scale} statut={isGameOver} setIsGameOver={setIsGameOver} setIsPaused={setIsPaused} setScore={setScore} setSnake={setSnake} setDirection={setDirection} setFruit={setFruit} pickLocation={pickLocation}/>
-      )}
+      <Over scale={scale} statut={isGameOver} setIsGameOver={setIsGameOver} setIsPaused={setIsPaused} setScore={setScore} setSnake={setSnake} setDirection={setDirection} setFruit={setFruit} pickLocation={pickLocation}/>
       <div className='controls'>
         <div className="control-top">
           <button className="btn btn-gray" onClick={() => handleDirectionChange('Up')}><i className='icon icon-long-arrow up'></i></button>
