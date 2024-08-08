@@ -143,7 +143,7 @@ const Game = () => {
 
   return (
     <div className='game'>
-      <div className="score">Score: {score}</div>
+      <p className="score">Score: {score}</p>
       <button className="btn btn-primary pauseButton" onClick={handlePause}>
         {isPaused ? 'Resume' : 'Pause'}
       </button>

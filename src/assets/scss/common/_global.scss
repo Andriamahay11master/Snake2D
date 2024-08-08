@@ -1,5 +1,5 @@
 html{
-  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 body {
   color: #000;
@@ -7,10 +7,10 @@ body {
   font-size: 16px;
   line-height: 1.45;
   display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow-x: hidden;
   @include max(1280px) {
     font-size: 15px;
   }

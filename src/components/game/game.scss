@@ -5,6 +5,12 @@
 
 .game{
     position: relative;
+    width: 100%;
+    @include max(992px){
+        text-align: left;
+        display: inline-flex;
+        flex-direction: column;
+    }
     .score {
         font-size: 20px;
         text-align: left;
@@ -18,6 +24,9 @@
         cursor: pointer;
         position: absolute;
         right: -30%;
+        @include max(992px){
+            position: static;
+        }
     }
 
     canvas {
@@ -43,6 +52,18 @@
     }
 
     .controls{
-        
+        margin-top: 20px;
+        .control-top{
+            margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .control-bottom{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+        }
     }
 }

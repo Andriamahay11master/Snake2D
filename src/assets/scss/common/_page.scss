@@ -1,8 +1,7 @@
 .page{
+  @include max(992px){
+    padding: 20px;
+  }
     .gameContainer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
     }
   }
