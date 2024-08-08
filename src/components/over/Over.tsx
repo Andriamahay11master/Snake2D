@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './over.scss'
 interface OverProps {
     scale: number;
@@ -31,6 +32,7 @@ export default function Over({scale, statut,
                 </div>
                 <div className="over-bottom">
                     <button className="btn btn-icon" onClick={handleRestart}><i className="icon icon-retry"></i><span>Tap to retry</span></button>
+                    <Link className="btn btn-icon" to="/"><i className="icon icon-close"></i><span>Quit game</span></Link>
                 </div>
             </div>
         </div>
