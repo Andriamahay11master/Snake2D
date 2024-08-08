@@ -30,7 +30,8 @@
     }
 
     canvas {
-        border: 1px solid $color-grayscale;
+        border: 1px solid lighten($color-grayscale, 20%);
+        background: lighten($color-grayscale, 20%);
     }
 
     .gameOver {
@@ -67,6 +68,9 @@
         }
         .icon{
             display: inline-block;
+            font-size: 20px;
+            font-weight: 600;
+            color: #000;
             &.up{
                 transform: rotate(-90deg);
             }

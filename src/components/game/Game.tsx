@@ -124,12 +124,12 @@ const Game = () => {
     if (!ctx) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = '#0B63E5';
+    ctx.fillStyle = '#000';
     snake.forEach((segment) => {
         ctx.fillRect(segment.x, segment.y, scale, scale);
     });
 
-    ctx.fillStyle = '#0F9918';
+    ctx.fillStyle = '#094eb4';
     ctx.fillRect(fruit.x, fruit.y, scale, scale);
 };
 
