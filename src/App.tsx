@@ -1,14 +1,18 @@
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.scss'
 import './assets/scss/main.scss'
-import Game from './components/game/Game'
+import { BeginGame } from './pages/game/BeginGame';
+import Home from './pages/home/Home';
 function App() {
 
   return (
-    <div className="page">
-      <div className="gameContainer">
-        <Game/>
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/game' element={<BeginGame />}></Route>
+        <Route path='/' element={<Home />}></Route>
+      </Routes>
+    </Router>
     
   )
 }

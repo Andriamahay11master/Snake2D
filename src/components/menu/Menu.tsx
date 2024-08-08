@@ -11,7 +11,7 @@ export default function Menu({linkMenu} : MenuProps) {
             <div className="menu-top">
                 <div className="menu-title">
                     <h1>Snake 2D</h1>
-                    <img className="menu-img" src="/serpent.png"/>
+                    <img className="menu-img" src="/snake.gif"/>
                 </div>
             </div>
             <div className="menu-content">
