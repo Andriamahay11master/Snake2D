@@ -156,12 +156,12 @@ const Game = () => {
       )}
       <div className='controls'>
         <div className="control-top">
-          <button className="btn btn-gray" onClick={() => handleDirectionChange('Up')}><i className='icon-long-arrow up'></i></button>
+          <button className="btn btn-gray" onClick={() => handleDirectionChange('Up')}><i className='icon icon-long-arrow up'></i></button>
         </div>
         <div className="control-bottom">
-          <button className="btn btn-gray" onClick={() => handleDirectionChange('Left')}><i className='icon-long-arrow left'></i></button>
-          <button className="btn btn-gray" onClick={() => handleDirectionChange('Down')}><i className='icon-long-arrow down'></i></button>
-          <button className="btn btn-gray" onClick={() => handleDirectionChange('Right')}><i className='icon-long-arrow right'></i></button>
+          <button className="btn btn-gray" onClick={() => handleDirectionChange('Left')}><i className='icon icon-long-arrow left'></i></button>
+          <button className="btn btn-gray" onClick={() => handleDirectionChange('Down')}><i className='icon icon-long-arrow down'></i></button>
+          <button className="btn btn-gray" onClick={() => handleDirectionChange('Right')}><i className='icon icon-long-arrow right'></i></button>
         </div>
       </div>
     </div>
