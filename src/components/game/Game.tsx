@@ -12,9 +12,14 @@ const Game = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const canvasRef = useRef(null);
+  const touchStartRef = useRef({ x: 0, y: 0 });
+  const touchEndRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchmove', handleTouchMove);
+    document.addEventListener('touchend', handleTouchEnd);
 
     const interval = setInterval(() => {
       if (!isPaused && !isGameOver) {
@@ -24,6 +29,9 @@ const Game = () => {
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
       clearInterval(interval);
     };
   }, [isPaused, isGameOver, direction, snake]);
@@ -55,6 +63,37 @@ const Game = () => {
         break;
       default:
         break;
+    }
+  };
+
+  const handleTouchStart = (e: TouchEvent) => {
+    const touch = e.touches[0];
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    const touch = e.touches[0];
+    touchEndRef.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const handleTouchEnd = () => {
+    const deltaX = touchEndRef.current.x - touchStartRef.current.x;
+    const deltaY = touchEndRef.current.y - touchStartRef.current.y;
+    const absDeltaX = Math.abs(deltaX);
+    const absDeltaY = Math.abs(deltaY);
+
+    if (absDeltaX > absDeltaY) {
+      if (deltaX > 0 && direction.x === 0) {
+        setDirection({ x: scale, y: 0 }); // Swipe right
+      } else if (deltaX < 0 && direction.x === 0) {
+        setDirection({ x: -scale, y: 0 }); // Swipe left
+      }
+    } else {
+      if (deltaY > 0 && direction.y === 0) {
+        setDirection({ x: 0, y: scale }); // Swipe down
+      } else if (deltaY < 0 && direction.y === 0) {
+        setDirection({ x: 0, y: -scale }); // Swipe up
+      }
     }
   };
 
