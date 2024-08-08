@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './game.scss';
+import Over from '../over/Over';
 const scale = 20;
 const rows = 400 / scale; // Assumes canvas height is 400
 const columns = 400 / scale; // Assumes canvas width is 400
@@ -116,15 +117,6 @@ const Game = () => {
     }
   };
 
-  const handleRestart = () => {
-    setIsGameOver(false);
-    setIsPaused(false);
-    setScore(0);
-    setSnake([{ x: 0, y: 0 }]);
-    setDirection({ x: scale, y: 0 });
-    setFruit(pickLocation());
-  };
-
   const draw = () => {
     const canvas = canvasRef.current as HTMLCanvasElement | null;
     if (!canvas) return;
@@ -149,10 +141,7 @@ const Game = () => {
       </button>
       <canvas className="gameCanvas" ref={canvasRef} width="400" height="400" />
       {isGameOver && (
-        <div className="gameOver">
-          <p>Game Over</p>
-          <button className="btn btn-gray restartButton" onClick={handleRestart}>Play Again</button>
-        </div>
+        <Over scale={scale} statut={isGameOver} setIsGameOver={setIsGameOver} setIsPaused={setIsPaused} setScore={setScore} setSnake={setSnake} setDirection={setDirection} setFruit={setFruit} pickLocation={pickLocation}/>
       )}
       <div className='controls'>
         <div className="control-top">
