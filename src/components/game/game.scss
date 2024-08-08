@@ -32,6 +32,7 @@
     canvas {
         border: 1px solid lighten($color-grayscale, 20%);
         background: lighten($color-grayscale, 20%);
+        border-radius: 4px;
     }
 
     .gameOver {
